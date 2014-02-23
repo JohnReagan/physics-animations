@@ -40,23 +40,32 @@ function drawTriangle(x0, y0, xLeg, yLeg) {
 /* This function creates triangles from user input and 
  * adds them to the stage from the triangles array.
  */
- function loadTriangles() {
-   	//arbitrary x and y, change later
-   	var x = 50;
-   	var y = 50; 
-   	//get values from sliders
-   	var xInput = new Number(document.getElementById("xSlider").value);
+function loadTriangles() {
+ 	//removes all existing triangles from layer and array
+  triangles.length = 0;
+  layer.destroyChildren(); 
+
+  //arbitrary x and y, change later
+ 	var x = 50;
+ 	var y = 50; 
+ 	
+  //get values from sliders
+ 	var xInput = new Number(document.getElementById("xSlider").value);
 	var yInput = new Number(document.getElementById("ySlider").value);
-   	//draw triangles, may be able to do this with loop
-   	drawTriangle(x,y,xInput,yInput);
-   	drawTriangle(x+yInput,y,-yInput,xInput);
-   	drawTriangle(x,y,xInput,-yInput);
-   	drawTriangle(x,y,-xInput,-yInput);
-   	//loop thru triangles array and add to layer
-  	for (var i = triangles.length - 1; i >= 0; i--) {
-  	 layer.add(triangles[i])
-  	};
-  	//add layer to stage
-  	stage.add(layer);
+ 	var offset = xInput/2+yInput/2;
+  
+  //draw triangles, may be able to do this with loop
+ 	drawTriangle(x,y,xInput,yInput);
+ 	drawTriangle(x+offset,y,-yInput,xInput);
+ 	drawTriangle(x,y+offset,yInput,-xInput);
+ 	drawTriangle(x+offset,y+offset,-xInput,-yInput);
+ 	
+  //loop thru triangles array and add to layer
+	for (var i = triangles.length - 1; i >= 0; i--) {
+	 layer.add(triangles[i])
+	};
+	
+  //add layer to stage
+	stage.add(layer);
 }
 
