@@ -53,6 +53,31 @@ function loadTriangles() {
  	var xInput = new Number(document.getElementById("xSlider").value);
 	var yInput = new Number(document.getElementById("ySlider").value);
  	var offset = xInput/2+yInput/2;
+
+  //calculate bounds
+  var minX = x;
+  var maxX = minX+offset;
+  var minY = y;
+  var maxY = minY+offset;
+
+  //define triangleGroup, which sets bounds
+  var triangleGroup = new Kinetic.Group({
+    //draggable: true,
+    x:50,
+    y:50,
+    dragBoundFunc: function(pos) {
+      var posX = pos.x;
+      var posY = pos.y;
+      if(pos.x<minX) posX = minX;
+      if(pos.x>maxX) posX = maxX;
+      if(pos.y<minY) posY = minY;
+      if(pos.y>maxY) posY = maxY;
+      return {
+        x:posX,
+        y:posY
+      }
+    }
+  });
   
   //draw triangles, may be able to do this with loop
  	drawTriangle(x,y,xInput,yInput);
@@ -62,10 +87,11 @@ function loadTriangles() {
  	
   //loop thru triangles array and add to layer
 	for (var i = triangles.length - 1; i >= 0; i--) {
-	 layer.add(triangles[i])
+	 triangleGroup.add(triangles[i])
 	};
 	
   //add layer to stage
+  layer.add(triangleGroup);
 	stage.add(layer);
 }
 
