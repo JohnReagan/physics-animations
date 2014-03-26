@@ -34,18 +34,15 @@ function drawTriangle(x0, y0, xLeg, yLeg, lb, rb, bb, tb) {
           } else if (pos.y > tb) {
             newY = tb;
           }
-
           if (pos.x < lb) {
             newX = lb;
           }else if(pos.x>rb) {
             newX = rb;
           }
-          
           return {
             x: newX,
             y: newY
-          };
-          
+          };    
         },
 
         sceneFunc: function(context) {
@@ -76,17 +73,17 @@ function loadTriangles() {
 	var yInput = new Number(document.getElementById("ySlider").value);
  	var offset = xInput/2+yInput/2;
 
-   //define bounds
+  //define bounds
   var leftBound = x;
   var rightBound = x+offset;
   var bottomBound = y;
   var topBound = y+offset;
   
   //draw triangles, may be able to do this with loop
- 	drawTriangle(x,y,xInput,yInput, leftBound, rightBound, bottomBound, topBound);
- 	drawTriangle(x+offset,y,-yInput,xInput, leftBound, rightBound, bottomBound, topBound);
- 	drawTriangle(x,y+offset,yInput,-xInput, leftBound, rightBound, bottomBound, topBound);
- 	drawTriangle(x+offset,y+offset,-xInput,-yInput, leftBound, rightBound, bottomBound, topBound);
+ 	drawTriangle(x,y,xInput,yInput, x, leftBound+yInput, bottomBound, y+xInput);
+ 	drawTriangle(x+offset,y,-yInput,xInput, leftBound-offset+yInput, rightBound, bottomBound, topBound-offset+yInput);
+ 	drawTriangle(x,y+offset,yInput,-xInput, leftBound, rightBound+offset-yInput, bottomBound+offset-yInput, topBound);
+ 	drawTriangle(x+offset,y+offset,-xInput,-yInput, leftBound+offset-yInput, rightBound, bottomBound-offset+yInput, topBound);
 	
   //loop thru triangles array and add to layer
 	for (var i = triangles.length - 1; i >= 0; i--) {
