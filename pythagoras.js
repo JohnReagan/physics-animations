@@ -16,7 +16,7 @@ var triangles = [];
  * params: x0, y0: coords to start drawing
  *		  xLeg, yLeg: lengths of legs
  */ 
-function drawTriangle(x0, y0, xLeg, yLeg) {
+function drawTriangle(x0, y0, xLeg, yLeg, lb, rb, bb, tb) {
 
 	triangles.push(new Kinetic.Shape({
         draggable: true,
@@ -25,6 +25,28 @@ function drawTriangle(x0, y0, xLeg, yLeg) {
         strokeWidth: 1,
         x: x0,
         y: y0,
+
+        dragBoundFunc: function(pos) {
+          var newY = pos.y;
+          var newX = pos.x;
+          if (pos.y < bb) {
+            newY = bb;
+          } else if (pos.y > tb) {
+            newY = tb;
+          }
+
+          if (pos.x < lb) {
+            newX = lb;
+          }else if(pos.x>rb) {
+            newX = rb;
+          }
+          
+          return {
+            x: newX,
+            y: newY
+          };
+          
+        },
 
         sceneFunc: function(context) {
           context.beginPath();
@@ -53,12 +75,18 @@ function loadTriangles() {
  	var xInput = new Number(document.getElementById("xSlider").value);
 	var yInput = new Number(document.getElementById("ySlider").value);
  	var offset = xInput/2+yInput/2;
+
+   //define bounds
+  var leftBound = x;
+  var rightBound = x+offset;
+  var bottomBound = y;
+  var topBound = y+offset;
   
   //draw triangles, may be able to do this with loop
- 	drawTriangle(x,y,xInput,yInput);
- 	drawTriangle(x+offset,y,-yInput,xInput);
- 	drawTriangle(x,y+offset,yInput,-xInput);
- 	drawTriangle(x+offset,y+offset,-xInput,-yInput);
+ 	drawTriangle(x,y,xInput,yInput, leftBound, rightBound, bottomBound, topBound);
+ 	drawTriangle(x+offset,y,-yInput,xInput, leftBound, rightBound, bottomBound, topBound);
+ 	drawTriangle(x,y+offset,yInput,-xInput, leftBound, rightBound, bottomBound, topBound);
+ 	drawTriangle(x+offset,y+offset,-xInput,-yInput, leftBound, rightBound, bottomBound, topBound);
 	
   //loop thru triangles array and add to layer
 	for (var i = triangles.length - 1; i >= 0; i--) {
