@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html><center>
 	<head>
 		<style>
 			body {
@@ -9,21 +9,27 @@
 			div {
 				height: 500px;
 				width: 500px;
-				background-color: green;
+				background-color: white;
+				border: black; 
 			}
 		</style>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css">
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
 	</head>
 
-	<body>
+	<body><font face="cambria">
 		<h1>Proving the Pythagoras Theorem</h1>
 
 		<div id="kineticCanvas"></div>
 
-		<em>X</em><input type="range" id="xSlider" value="80" min="60" max="150">
-		<em>Y</em><input type="range" id="ySlider" value="120" min="60" max="150">
-		<button id="drawButon" onclick="loadTriangles()">Draw Triangle!</button>
-
+		<b>Leg 1 (X)</b><input type="range" id="xSlider" value="50" min="50" max="200" data-popup-enabled="true">
+		<b>Leg 2 (Y)</b><input type="range" id="ySlider" value="50" min="50" max="200" data-popup-enabled="true">
+		<button id="drawButon" onclick="loadTriangles()"><font face="cambria">Draw Triangle!</font></button>
+		<button id="clearScreen" onclick="clearScreen()"><font face="cambria">Clear</font></button>
+		<br></br>
+		<button id="linkHomepage" onclick="linkHomepage()"><font face="cambria">HTML5 Animations Homepage</font></button>
 		<script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.1.min.js"></script>
 		<script src="pythagoras.js"></script>
-	</body>
-</html>
+	</font></body>
+</center></html>
