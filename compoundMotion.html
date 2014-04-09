@@ -1,8 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<style>
+			.img{
+				position: absolute; 
+				z-index:1;
+			}
+			#container{
+				display:inline-block;
+				width:500px;
+				height:333px;
+				position: relative;
+			}
+			#myCanvas{
+				z-index:20;
+				position: relative;
+			}
+		</style>
 	</head>
 	
 	<body>
+		<div id="container">
+			<img class='img' src="Galileo Text.png" />
+			<canvas id="myCanvas" width="500" height="333"></canvas>
+		</div>
+	
+		<div id="myButtons">
+			<button id="startAnimation">Start</button>
+			<button id="stopAnimation">Stop</button>
+		</div>
+
+		<script src="compoundMotion.js"></script>
 	</body>
 </html>
