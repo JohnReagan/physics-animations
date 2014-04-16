@@ -37,7 +37,7 @@ function animate() {
 		if (i==0) {
 			context.fillStyle = "rgba(255,0,0,1)";
 		} else {
-			context.fillStyle = "rgba(255,0,0,0.5)";
+			context.fillStyle = "rgba(255,0,0,0.2)";
 		};
 		balls[i].vY += balls[i].aY;
 		balls[i].x += balls[i].vX;
