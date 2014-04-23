@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="bootstrap.min.css">
 		<style>
 			.img{
 				position: absolute; 
@@ -26,13 +27,17 @@
 				margin-right: auto;
 				text-align: center;
 			}
+			body {
+				background-color: #D8D8D8;
+			}
 		</style>
-		<link rel="stylesheet" href="bootstrap.min.css">
+		
 		
 	</head>
 	
 	<body><center>
-		<h2>Galileo's Representation of Projectile Motion as Compound Motion</h2>
+		
+		<h3>Galileo's Representation of Projectile Motion as Compound Motion</h3>
 		<div id="container">
 			<img class='img' src="Galileo Text.png" />
 			<canvas id="myCanvas" width="500" height="333"></canvas>
@@ -41,9 +46,11 @@
 		<div id="myButtons">
 			<button id="startAnimation" type="button" class="btn btn-danger">Play</button>
 		</div>
+		
 		<div id="authors">
 		<p>Created by John Reagan, Alex Bryant, and Sri Kodakalla</p>
 		</div>
+
 
 		<script src="compoundMotion.js"></script>
 	</center></body>
