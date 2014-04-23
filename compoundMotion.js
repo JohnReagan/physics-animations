@@ -23,8 +23,8 @@ var Ball = function(x, y, r, vX, vY, aY) {
 }
 
 var balls = new Array();
-var drawPoints = new Array(); //array of points on projectile path
-var count = 0; //count for parabola points
+var drawPoints = [[422,38]] //array of points on projectile path
+var count = 1; //count for parabola points
 
 balls[0] = new Ball(422, 38, 10, -5, 0, .1);
 balls[1] = new Ball(422, 38, 10, -5, 0, 0);
@@ -32,12 +32,6 @@ balls[2] = new Ball(422, 38, 10, 0, 0, .1);
 
 function animate() {
 	context.clearRect(0,0, canvas.width, canvas.height);
-	
-	//put current position in projectile coord set
-	drawPoints[count] = [0,0];
-	drawPoints[count][0] = balls[0].x;
-	drawPoints[count][1] = balls[0].y;
-	count++;
 	
 	//loop through balls and draw
 	for (var i=0; i<balls.length; i++) {
